@@ -117,8 +117,9 @@ void on_read(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf) {
     http_parser* parser = &client->parser;
     auto parsed = http_parser_execute(parser, &settings, buf->base, nread);
     if (parsed < static_cast<size_t>(nread)) {
-      fprintf(stderr, "parser error(%s): parsed lesser bytes %ld of %ld\n",
-        http_errno_name(http_errno(parser->http_errno)), parsed, nread);
+      // fprintf(stderr, "parser error(%s): parsed lesser bytes %ld of %ld\n",
+      //   http_errno_name(http_errno(parser->http_errno)), parsed, nread);
+      printf("Not a http request, no response sent\n");
     }
   } else {
     // error
