@@ -35,4 +35,5 @@
 .vscode/
 
 # built target
+deps/
 sample-server
